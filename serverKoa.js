@@ -1,7 +1,5 @@
-// import Koa from 'koa';
-// import KoaRouter from 'koa-router';
-var Koa = require('Koa');
-var Router = require('koa-router');
+import Koa from 'koa';
+import Router from 'koa-router';
 
 var app = new Koa();
 var router = new Router();
