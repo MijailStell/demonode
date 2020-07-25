@@ -17,8 +17,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "npm ./index.js",
-    "build:babel": "babel server.js -d dist",
-    "start": "npm run build && node dist/server.js"
+    "build:babel": "babel serverKoa.js -d dist",
+    "start": "npm run build && node dist/serverKoa.js"
   },
   "keywords": [
     "demito"
