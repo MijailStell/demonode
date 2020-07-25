@@ -11,27 +11,31 @@ function parseBody(data){
     data
   };
 }
+
+axios.interceptors.response.use(function(config){
+  console.log("Interceptor del response", config);
+  const token = "pruebaToken";
+  config.headers = {
+    'Content-type': 'application/json',
+    // 'Autorization': `Bearer ${token}`
+  };
+
+  return parseBody(config.data);
+}, function(error){
+  return Promise.reject(error);
+});
+
 rutas.get('/home', (ctx, next) => {
-  axios.interceptors.response.use(function(response){
-    console.log("Interceptor del response", response);
-
-    return parseBody(response.data);
-  }, function(error){
-    return Promise.reject(error);
-  });
-
-  axios.get('https://api.github.com/users/hadley/orgs', {
-    headers: {
-      'Content-type': 'application/json'
-    }
-  }).then(respuesta => {
+  axios.get('https://api.github.com/users/hadley/orgs').then(respuesta => {
     console.log("Respuesta con axios: ", respuesta);
   });
   //ctx.body = 'ESTOY EN EL HOME';
 });
  
 rutas.get('/page1', (ctx, next) => {
-  //ctx.body = 'ESTOY EN EL PAGE1';
+  axios.get('https://api.github.com/users/hadley/repos').then(respuesta => {
+    console.log("Respuesta con axios: ", respuesta);
+  });
 });
  
 rutas.get('/page2', (ctx, next) => {
