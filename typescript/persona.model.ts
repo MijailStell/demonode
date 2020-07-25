@@ -1,9 +1,8 @@
 interface Persona {
-    nombre: string;
+    nombre?: string;
     edad: number;
 }
 
 const persona: Persona = {
-    nombre: "Luis",
     edad: 23
 };
