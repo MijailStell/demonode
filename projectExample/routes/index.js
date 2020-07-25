@@ -1,13 +1,31 @@
 import Router from 'koa-router';
 import fetch from 'node-fetch';
+import axios from 'axios';
  
 var rutas = new Router();
+
+function parseBody(data){
+  return {
+    success: true,
+    message: "respuesta exitosa",
+    data
+  };
+}
 rutas.get('/home', (ctx, next) => {
-  fetch('https://api.github.com/users/hadley/orgs').then(respuesta => {
-    return respuesta.json();
-  }).then(respuestaJson => {
-    console.log(respuestaJson);
-    ctx.body = respuestaJson;
+  axios.interceptors.response.use(function(response){
+    console.log("Interceptor del response", response);
+
+    return parseBody(response.data);
+  }, function(error){
+    return Promise.reject(error);
+  });
+
+  axios.get('https://api.github.com/users/hadley/orgs', {
+    headers: {
+      'Content-type': 'application/json'
+    }
+  }).then(respuesta => {
+    console.log("Respuesta con axios: ", respuesta);
   });
   //ctx.body = 'ESTOY EN EL HOME';
 });
