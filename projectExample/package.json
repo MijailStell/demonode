@@ -1,0 +1,32 @@
+{
+  "name": "webpackss",
+  "version": "1.0.0",
+  "description": "proyecto con webpackss",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile:dev": "webpack --config webpack.config.js",
+    "transpile:prod": "webpack --config webpack.prod.config.js",
+    "start": "nodemon node ./dist/bundle.js"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "mijailstell",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "koa": "^2.13.0",
+    "koa-router": "^9.1.0",
+    "nodemon": "^2.0.4",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.0"
+  }
+}
