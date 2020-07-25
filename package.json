@@ -4,6 +4,10 @@
   "description": "demito",
   "main": "index.js",
   "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel": "^6.23.0",
     "express": "^4.17.1",
     "koa": "^2.13.0",
     "koa-router": "^9.1.0",
@@ -13,7 +17,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "npm ./index.js",
-    "start": "nodemon node server.js"
+    "build:babel": "babel server.js -d dist",
+    "start": "npm run build && node dist/server.js"
   },
   "keywords": [
     "demito"
